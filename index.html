@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dog Feeding Tool</title>
+  <meta name="description" content="A simple feeding tool to determine how much food to give your dog.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0a0c10">
+
+  <meta property="og:title" content="Dog Feeding Tool">
+  <meta property="og:description" content="A simple feeding tool to determine how much food to give your dog.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="icon" href="assets/favicon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="assets/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./">
+        <img class="brand-mark" src="assets/logo.png" alt="" width="382" height="194" aria-hidden="true">
+        <span class="brand-text">dog<span class="brand-dim">/</span>feed</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#calculator">Calculator</a>
+        <a href="#guide">Guide</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+        <span data-theme-label>dark</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero shell">
+      <p class="eyebrow">Feeding calculator</p>
+      <h1>Know exactly how much<br>to feed your dog.</h1>
+      <p class="lede">
+        Royal Canin prints the daily amounts on the back of the bag, in tiny type,
+        for a handful of weights that never quite match your dog. Enter yours and
+        this reads the chart for you — including the gaps between the columns.
+      </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#calculator">Open calculator</a>
+        <a class="button" href="#guide">Read the guide</a>
+        <a class="button coffee-link" href="https://buymeacoffee.com/baemorgan"
+           target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+            <path d="M2 5h9v4a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V5Z"
+                  fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M11 6.5h1.5a1.75 1.75 0 0 1 0 3.5H11"
+                  fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M4.5 1.5v1.5M6.75 1.5v1.5M9 1.5v1.5"
+                  fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          Buy me a coffee
+        </a>
+      </div>
+    </section>
+
+    <section class="shell" id="calculator" aria-labelledby="calculator-title">
+      <div class="section-head">
+        <h2 id="calculator-title">Calculator</h2>
+        <p class="section-note">Based on the Royal Canin Dachshund feeding charts.</p>
+      </div>
+
+      <div class="panel-grid">
+        <form class="panel" id="feeding-form" novalidate>
+          <div class="field">
+            <label for="breed">Breed</label>
+            <select id="breed" name="breed">
+              <option value="dachshund" selected>Dachshund</option>
+            </select>
+          </div>
+
+          <fieldset class="field">
+            <legend>Life stage</legend>
+            <div class="segments">
+              <label class="segment">
+                <input type="radio" name="stage" value="puppy">
+                <span>Puppy</span>
+              </label>
+              <label class="segment">
+                <input type="radio" name="stage" value="adult" checked>
+                <span>Adult</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div data-stage-panel="puppy" hidden>
+            <div class="field">
+              <label for="adult-weight">Expected adult weight</label>
+              <div class="input-row">
+                <input id="adult-weight" name="adultWeight" type="number" inputmode="decimal"
+                       min="3" max="10" step="0.1" placeholder="5.0">
+                <span class="unit">kg</span>
+              </div>
+              <p class="field-hint">What the dog should weigh full grown, not their weight today.</p>
+            </div>
+
+            <div class="field">
+              <label for="age">Current age</label>
+              <select id="age" name="age">
+                <option value="">Select…</option>
+                <option value="2">2 months</option>
+                <option value="3">3 months</option>
+                <option value="4">4 months</option>
+                <option value="5">5 months</option>
+                <option value="6">6 months</option>
+                <option value="7">7 months</option>
+                <option value="8">8 months</option>
+                <option value="9">9 months</option>
+                <option value="10">10 months</option>
+              </select>
+              <p class="field-hint">From 11 months, switch to Adult.</p>
+            </div>
+
+            <div class="field">
+              <label for="brand-puppy">Brand</label>
+              <select id="brand-puppy" name="brandPuppy">
+                <option value="royal-canin" selected>Royal Canin</option>
+              </select>
+            </div>
+          </div>
+
+          <div data-stage-panel="adult">
+            <div class="field">
+              <label for="weight">Current weight</label>
+              <div class="input-row">
+                <input id="weight" name="weight" type="number" inputmode="decimal"
+                       min="2" max="10" step="0.1" placeholder="7.0">
+                <span class="unit">kg</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="activity">Activity level</label>
+              <select id="activity" name="activity">
+                <option value="">Select…</option>
+                <option value="normal">Normal</option>
+                <option value="active">Active</option>
+                <option value="veryActive">Very active</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="brand-adult">Brand</label>
+              <select id="brand-adult" name="brandAdult">
+                <option value="royal-canin" selected>Royal Canin</option>
+              </select>
+            </div>
+
+            <fieldset class="field">
+              <legend>Food</legend>
+              <div class="segments">
+                <label class="segment">
+                  <input type="radio" name="food" value="kibble" checked>
+                  <span>Kibble only</span>
+                </label>
+                <label class="segment">
+                  <input type="radio" name="food" value="mixed">
+                  <span>Kibble + pouch</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="form-actions">
+            <button class="button button-primary" type="submit">Calculate</button>
+            <button class="button" type="reset">Reset</button>
+          </div>
+
+          <p class="form-note" data-form-note hidden></p>
+        </form>
+
+        <aside class="panel panel-result" aria-live="polite">
+          <p class="result-label">Daily amount</p>
+          <p class="result-value" data-result-value>—</p>
+          <p class="result-unit">grams per day</p>
+          <hr class="rule">
+          <dl class="result-meta">
+            <div><dt>Cups / day</dt><dd data-result-cups>—</dd></div>
+            <div><dt>Per meal</dt><dd data-result-meal>—</dd></div>
+            <div><dt>Meals / day</dt><dd data-result-meals>—</dd></div>
+            <div><dt>Energy</dt><dd data-result-energy>—</dd></div>
+            <div data-result-pouch-row hidden><dt>Wet pouches</dt><dd data-result-pouch>—</dd></div>
+          </dl>
+          <details class="disclosure">
+            <summary>How this was worked out</summary>
+            <div class="disclosure-body">
+              <ol class="steps" data-working>
+                <li>Run a calculation to see the steps.</li>
+              </ol>
+            </div>
+          </details>
+
+          <p class="result-source" data-result-source>
+            Royal Canin Dachshund Puppy · 3887 kcal/kg · 1 cup = 240 ml = 86 g
+          </p>
+        </aside>
+      </div>
+
+      <details class="disclosure disclosure-block">
+        <summary>Full feeding chart <span class="summary-tag" data-chart-tag>puppy</span></summary>
+        <div class="disclosure-body">
+          <div class="table-scroll" data-chart-table></div>
+          <p class="table-note" data-chart-note></p>
+        </div>
+      </details>
+    </section>
+
+    <section class="shell" id="guide" aria-labelledby="guide-title">
+      <div class="section-head">
+        <h2 id="guide-title">Guide</h2>
+        <p class="section-note">Four things the chart on the bag doesn’t tell you.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <span class="card-index">01</span>
+          <h3>Weigh it, don’t scoop it</h3>
+          <p>
+            A cup is a volume, not a weight. The same 240 ml holds 86 g of the puppy
+            kibble but only 77 g of the adult. Kitchen scales cost less than a bag of
+            food and take the guesswork out.
+          </p>
+        </article>
+        <article class="card">
+          <span class="card-index">02</span>
+          <h3>Puppies go by adult weight</h3>
+          <p>
+            The puppy chart is indexed by what your dog will weigh full grown, not
+            what they weigh today. Miniatures land around 4–5 kg and standards around
+            9 kg; your breeder or vet can narrow it down.
+          </p>
+        </article>
+        <article class="card">
+          <span class="card-index">03</span>
+          <h3>Treats come out of the total</h3>
+          <p>
+            Anything that isn’t kibble still counts. Keep treats to roughly a tenth of
+            the day’s calories and take that off the measured amount rather than
+            adding it on top.
+          </p>
+        </article>
+        <article class="card">
+          <span class="card-index">04</span>
+          <h3>Watch the dog, not just the number</h3>
+          <p>
+            You should feel ribs without pressing and see a waist from above. Extra
+            weight is hard on a dachshund’s long back, so treat the chart as a
+            starting point and re-check the fit every few weeks.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell" id="about" aria-labelledby="about-title">
+      <div class="section-head">
+        <h2 id="about-title">About</h2>
+      </div>
+      <div class="prose">
+        <p>
+          Every number here is transcribed from Royal Canin Dachshund packaging — the
+          Puppy bag for 2 to 10 months, the Adult bag from 11 months on. Nothing is
+          invented. Where your dog falls between two printed columns the amount is
+          read proportionally between them, and the working under each result shows
+          exactly which cells it came from.
+        </p>
+        <p>
+          The two bags aren’t interchangeable. Puppy kibble is 86 g per 240 ml cup at
+          3887 kcal/kg; the adult is 77 g at 3726 kcal/kg. Each life stage uses its
+          own figures, so a number from one bag doesn’t transfer to the other.
+        </p>
+        <p>
+          This is a convenience tool for these two specific foods, not veterinary
+          advice. If your dog is neutered, pregnant, unwell or on a different food —
+          or if what you see in their body condition disagrees with the chart — your
+          vet’s advice wins.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <span>Dog Feeding Tool</span>
+      <div class="footer-links">
+        <a href="https://github.com/BadenMorgan/dog-feeding-tool">Source on GitHub</a>
+        <a class="coffee-link" href="https://buymeacoffee.com/baemorgan"
+           target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false">
+            <path d="M2 5h9v4a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V5Z"
+                  fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M11 6.5h1.5a1.75 1.75 0 0 1 0 3.5H11"
+                  fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M4.5 1.5v1.5M6.75 1.5v1.5M9 1.5v1.5"
+                  fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          Buy me a coffee
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
