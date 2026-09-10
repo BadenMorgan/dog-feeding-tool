@@ -1,0 +1,24 @@
+---
+description: Never commit, push, or otherwise write to git history without being asked
+alwaysApply: true
+---
+
+# Git is manual
+
+The user commits and pushes themselves. Never run these on your own initiative,
+even when a task feels finished and even when the changes are obviously correct:
+
+- `git commit` / `git commit --amend`
+- `git push`
+- `git merge`, `git rebase`, `git cherry-pick`, `git revert`
+- `git stash`, `git reset`, `git checkout -- <file>`, `git restore`
+- `gh pr create`, `gh pr merge`
+
+Only run them when the user asks in that turn, e.g. "commit this" or "push it".
+A general instruction to build or fix something is not permission to commit.
+
+Leave finished work as uncommitted changes in the working tree and say what you
+changed, so the user can review and stage it.
+
+Reading git state is always fine: `git status`, `git diff`, `git log`,
+`git show`, `git branch`.
