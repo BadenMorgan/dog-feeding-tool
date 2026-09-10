@@ -76,6 +76,13 @@
 
       <div class="panel-grid">
         <form class="panel" id="feeding-form" novalidate>
+          <div class="field">
+            <label for="breed">Breed</label>
+            <select id="breed" name="breed">
+              <option value="dachshund" selected>Dachshund</option>
+            </select>
+          </div>
+
           <fieldset class="field">
             <legend>Life stage</legend>
             <div class="segments">
@@ -117,6 +124,13 @@
               </select>
               <p class="field-hint">From 11 months, switch to Adult.</p>
             </div>
+
+            <div class="field">
+              <label for="brand-puppy">Brand</label>
+              <select id="brand-puppy" name="brandPuppy">
+                <option value="royal-canin" selected>Royal Canin</option>
+              </select>
+            </div>
           </div>
 
           <div data-stage-panel="adult">
@@ -136,6 +150,13 @@
                 <option value="normal">Normal</option>
                 <option value="active">Active</option>
                 <option value="veryActive">Very active</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="brand-adult">Brand</label>
+              <select id="brand-adult" name="brandAdult">
+                <option value="royal-canin" selected>Royal Canin</option>
               </select>
             </div>
 
