@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var STORAGE_KEY = "dft-theme";
+  var STORAGE_KEY = "dog-feed-theme";
   var root = document.documentElement;
   var toggle = document.querySelector("[data-theme-toggle]");
   var label = document.querySelector("[data-theme-label]");
